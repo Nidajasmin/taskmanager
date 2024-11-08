@@ -1,0 +1,40 @@
+{% extends 'navheader.html'%}
+{% block nav %}
+        
+        
+
+          <a href="{% url 'add' %}" class="btn btn-success ms-2 mt-2">Task add+</a>
+
+          <table class="table table-secondary table-bordered w-100 mt-3 text-center">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>TITLE</th>
+                    <th>DESCRIPTION</th>
+                    <th>DATE</th>
+                    <th>TIME</th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.title}}</td>
+                    <td>{{i.description}}</td>
+                    <td>{{i.date}}</td>
+                    <td>{{i.time}}</td>
+                    <td>
+                    <a href=" {% url 'edit' i.id %}"><i class="fa-solid fa-pen-to-square" style="color: #FFD43B;"></i></a><br>
+                    <a href="{% url 'delete' i.id %}"><i class="fa-solid fa-trash" style="color: #f10410;"></i></a>
+                    </td>
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+
+          </table>
+
+          {% endblock nav %}
+    
